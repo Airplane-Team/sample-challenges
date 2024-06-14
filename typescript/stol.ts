@@ -15,6 +15,7 @@ const challenge: Challenge = {
     feedback: false,
     resetContext: true,
     setUserWaypoint: false,
+    startUserTimer: true,
   },
   limitToAircraft: ['pa18'],
   phases: [
