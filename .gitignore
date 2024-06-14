@@ -1,0 +1,26 @@
+# gitignore System files
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.cache
+
+# User-specific files
+.idea
+*.ignore
+.vscode
+
+# All local files
+*.local
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+.yarn/install-state.gz
+.yarn/build-state.gz
