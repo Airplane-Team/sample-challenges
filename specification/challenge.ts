@@ -16,6 +16,8 @@ export interface EnabledTools {
   // sets a startpoint for the user that then they can get distance from
   // via `distanceFromStartpoint` enabled state
   setUserWaypoint?: boolean;
+  // starts / restarts a timer that the user can check the elapsed time
+  startUserTimer?: boolean;
 }
 
 export interface EnabledState {
