@@ -16,16 +16,19 @@ export interface EnabledTools {
   // sets a startpoint for the user that then they can get distance from
   // via `distanceFromStartpoint` enabled state
   setUserWaypoint?: boolean;
+  // starts / restarts a timer that the user can check the elapsed time
+  startUserTimer?: boolean;
 }
 
 export interface EnabledState {
-  // when not empty, the state will navigate to these waypoints
-  navigateToStateWaypoints?: {
-    latitudeDegrees: number;
-    longitudeDegrees: number;
-    altitudeMSL: number;
-    name: string;
-  }[];
+  // COMING SOON
+  // // when not empty, the state will navigate to these waypoints
+  // navigateToStateWaypoints?: {
+  //   latitudeDegrees: number;
+  //   longitudeDegrees: number;
+  //   altitudeMSL: number;
+  //   name: string;
+  // }[];
   // when set true, the state will navigate to the user waypoint
   navigateToUserWaypoint?: boolean;
   // when set true, the state will get the distance from the user waypoint
