@@ -70,7 +70,7 @@ const challenge: Challenge = {
 const jsonString = JSON.stringify(challenge, null, 2);
 
 import { writeFileSync } from 'fs';
-const fileName = 'stol.out.json';
+const fileName = 'simple-stol.out.json';
 const outputPath = 'json/' + fileName;
 writeFileSync(outputPath, jsonString);
 
