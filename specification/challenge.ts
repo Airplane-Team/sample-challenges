@@ -1,4 +1,19 @@
-export type AircraftType = 'da42' | 'c172p' | 'a250vtol' | 'ask21' | 'pa18';
+export type AircraftType =
+  | 'da42'
+  | 'c172p'
+  | 'a250vtol'
+  | 'ask21'
+  | 'pa18'
+  | 'b738'
+  | 'a333'
+  | 'f14'
+  | 'sf50'
+  | 'sr22'
+  | 'l1t'
+  | 'rv10'
+  | 'r22'
+  | 's76c'
+  | 'a103ulac';
 
 // The enabled tools are the tools that are available to the user
 // Empty object / undefined tools indicates no preference compared to default
