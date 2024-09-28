@@ -9,6 +9,7 @@ Thumbs.db
 *.swo
 *.bak
 *.cache
+*.out.*
 
 # User-specific files
 .idea
