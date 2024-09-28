@@ -1,0 +1,106 @@
+{
+  "name": "TripleChallenge",
+  "shortDescription": "Boston Triple Challenge",
+  "prompt": "# Boston Triple Challenge\nThis is a historical challenge invented for competitions at Beta Technologies and conducted in the ALIA-250 VTOL aircraft.\nYou will takeoff from the helipad, land on three rooftop helipads in Boston, and fly under two bridges to complete the challenge.\n\nNote: Pilots prefer magnetic heading for navigation.\n",
+  "enabledTools": {
+    "weatherLookup": false,
+    "muteAndStandby": true,
+    "airportCodeLookup": false,
+    "pohLookup": false,
+    "checklists": false,
+    "pilotNotes": false,
+    "feedback": false,
+    "startUserTimer": false
+  },
+  "limitToAircraft": [
+    "a250vtol"
+  ],
+  "phases": [
+    {
+      "name": "Setup",
+      "shortDescription": "Set your start point",
+      "prompt": "## Setup the Boston Triple Challenge\nThe triple challenge starts at the Boston City Hospital Helipad \"0MA4\", using the north facing or default starting point.\nYou'll need to use maximum world objects in the X-Plane settings to see the helipads in this challenge.\n\nStart the timer before transitioning to the next phase.\n",
+      "enabledTools": {
+        "startUserTimer": true
+      },
+      "transitions": [
+        {
+          "toPhaseName": "RooftopLandings",
+          "automaticTransition": true,
+          "conditions": "Upon takeoff or once pilot says they are ready to start the challenge... Remember to start the timer!"
+        }
+      ]
+    },
+    {
+      "name": "RooftopLandings",
+      "shortDescription": "Fly and land on three rooftops",
+      "prompt": "## Three Rooftop Landings\nPilot will Takeoff from the helipad and fly to the following rooftop helipads in Boston: Tufts Medical Center and two in the Downtown area.\n\nThe coordinates are provided in state. The pilot will land on each helipad and takeoff to the next. Read out the time at each landing.\n",
+      "enabledState": {
+        "recordFlightData": true,
+        "navigateToStateWaypoints": [
+          {
+            "name": "Tufts Medical Center",
+            "latitudeDeg": 42.349,
+            "longitudeDeg": -71.063,
+            "mslAltitudeFt": 139
+          },
+          {
+            "name": "Downtown 1: Back Bay",
+            "latitudeDeg": 42.353,
+            "longitudeDeg": -71.064,
+            "mslAltitudeFt": 458
+          },
+          {
+            "name": "Downtown 2: Financial District",
+            "latitudeDeg": 42.356,
+            "longitudeDeg": -71.052,
+            "mslAltitudeFt": 630
+          }
+        ]
+      },
+      "transitions": [
+        {
+          "toPhaseName": "Bridges",
+          "conditions": "After the third rooftop helipad landing.",
+          "automaticTransition": true
+        }
+      ]
+    },
+    {
+      "name": "Bridges",
+      "shortDescription": "Fly under two bridges",
+      "prompt": "## Fly under two bridges\nAfter the third landing, fly under two bridges in Boston.\n1. The Longfellow Bridge\n2. MIT's \"Harvard\" Bridge\n\nRead out the time after flying under each bridge. The challenge completes after flying under the second bridge.\n",
+      "enabledState": {
+        "recordFlightData": true,
+        "navigateToStateWaypoints": [
+          {
+            "name": "Longfellow Bridge",
+            "latitudeDeg": 42.363,
+            "longitudeDeg": -71.07,
+            "mslAltitudeFt": 50
+          },
+          {
+            "name": "MIT \"Harvard\" Bridge",
+            "latitudeDeg": 42.359,
+            "longitudeDeg": -71.09,
+            "mslAltitudeFt": 50
+          }
+        ]
+      },
+      "transitions": [
+        {
+          "toPhaseName": "Finish",
+          "conditions": "After flying under the second bridge.",
+          "automaticTransition": true
+        }
+      ]
+    },
+    {
+      "name": "Finish",
+      "shortDescription": "Challenge complete",
+      "prompt": "## Challenge Complete\nYou have completed the Boston Triple Challenge!\nRecord the time from the user timer and debrief the flight.\n",
+      "enabledTools": {},
+      "transitions": []
+    }
+  ]
+}
