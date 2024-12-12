@@ -8,8 +8,6 @@ import { Waypoint } from './waypoint';
 export interface EnabledTools {
   /**[default] Lets pilots look up a current US METAR. */
   weatherLookup?: boolean;
-  /** [default] When enabled, Shirley must be said for responses to be allowed after periods of silence.  */
-  toggleAssistantMode?: boolean;
   /** [default] lets pilots disable Shirley from replying.  */
   muteAndStandby?: boolean;
   /** Lets pilots look up an airport code by name.  */
