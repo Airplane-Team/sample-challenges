@@ -13,7 +13,7 @@
     "resetContext": true,
     "setUserWaypoint": false
   },
-  "limitToAircraft": ["pa18"],
+  "limitToAircraft": ["c172p"],
   "phases": [
     {
       "name": "Preflight",

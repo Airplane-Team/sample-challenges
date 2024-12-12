@@ -17,7 +17,7 @@ const challenge: Challenge = {
     setUserWaypoint: false,
     startUserTimer: true,
   },
-  limitToAircraft: ['pa18'],
+  limitToAircraft: ['c172p'],
   phases: [
     {
       name: 'Preflight',
