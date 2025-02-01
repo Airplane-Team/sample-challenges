@@ -1,37 +1,46 @@
 # Sample Shirley Challenges by Airplane.Team
 
-You can always get the latest version of this repository by visiting [github.com/airplane-team/sample-challenges](github.com/airplane-team/sample-challenges).
+This repository contains a collection of sample Shirley challenges created by the Airplane Team. You can use these challenges as a reference when creating your own challenges!
 
-If you need help, you can join us on our [Discord server](https://airplane.team/discord).
+If you need help, you can join us on our [Discord server](https://airplane.team/discord). If you create a challenge and would like feedback, you can post it in the #shirley-challenge-creator channel!
 
-## Typed Challenges
+## Folders
 
-To access features like multi-line strings, build your challenge in typescript and run it with `ts-node`.
+- **[JSON](./json)**: Sample challenges written in JSON format.
+- **[TypeScript](./typescript)**: Sample challenges written in TypeScript.
 
-```bash
-ts-node typescript/stol.ts
+## Shirley Challenge Maker
+
+The Shirley Challenge Maker is a tool that allows you to create Shirley challenges in a more user-friendly way using a GPT.
+
+Link to Shirley "GPT":
+https://chatgpt.com/g/g-678567a005d481919719e20535cf6f67-flyshirley-challenge-creator
+
+It can be helpful to first say,
+
+```
+Let's list out and agree on the points before you create the Challenge object. Here's the background info:
+
+(put your background info here)
 ```
 
-### Dependency on `ts-node`
+Then, when you're happy with the list, you can create the object:
 
-But first you need to install `ts-node`. Usually you'll want to do it globally, so you can run it from any directory. To do so, run the following command in your terminal:
-
-```bash
-npm install -g ts-node
+```
+Looks good! Let's create a the Challenge Object in the same style as this one:
+` ` `
+(paste your previous challenge here)
+` ` `
 ```
 
-You can also install it locally:
+## Testing
 
-```bash
-npm install ts-node
-```
+Copy and paste your challenge file into the Shirley Challenge Creator.
 
-Note that when you install it locally, you'll need to run it with `npx`:
+You can copy the whole file, but there are certain restrictions- most notably, no `//` inside a string and no strings with single quotes `' example '`.
 
-```bash
-npx ts-node typescript/stol.ts
-```
+The most up to date production version of the Challenge Creator can be found at:
 
-### Dependency on `npm` and `node.js`
+https://airplane.team/fly/create
 
-If you don't have `npm` installed, you can install it with [node.js](https://nodejs.org/).
+Or join our [Discord server](https://airplane.team/discord) and ask to join the beta test group for access to the latest features.
