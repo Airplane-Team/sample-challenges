@@ -1,8 +1,8 @@
-import { Challenge } from '../specification/challenge';
+import { Challenge } from "../specification/challenge";
 
 export const TripleChallenge: Challenge = {
-  name: 'TripleChallenge',
-  shortDescription: 'Boston Triple Challenge',
+  name: "TripleChallenge",
+  shortDescription: "Boston Triple Challenge",
   prompt: `# Boston Triple Challenge
 This is a historical challenge invented for competitions at Beta Technologies and conducted in the ALIA-250 VTOL aircraft.
 You will takeoff from the helipad, land on three rooftop helipads in Boston, and fly under two bridges to complete the challenge.
@@ -19,11 +19,11 @@ Note: Provide the magnetic course rather than the true course by adding the 14 d
     feedback: false,
     startUserTimer: false,
   },
-  limitToAircraft: ['a250vtol'],
+  limitToAircraft: ["a250vtol"],
   phases: [
     {
-      name: 'Setup',
-      shortDescription: 'Set your start point',
+      name: "Setup",
+      shortDescription: "Set your start point",
       prompt: `## Setup the Boston Triple Challenge
 The triple challenge starts at the Boston City Hospital Helipad "0MA4", using the north facing or default starting point.
 
@@ -40,16 +40,16 @@ Start the timer before transitioning to the next phase.
       enabledTools: { startUserTimer: true },
       transitions: [
         {
-          toPhaseName: 'RooftopLandings',
+          toPhaseName: "RooftopLandings",
           automaticTransition: true,
           conditions:
-            'Upon takeoff or once pilot says they are ready to start the challenge... Remember to start the timer!',
+            "Upon takeoff or once pilot says they are ready to start the challenge... Remember to start the timer!",
         },
       ],
     },
     {
-      name: 'RooftopLandings',
-      shortDescription: 'Fly and land on three rooftops',
+      name: "RooftopLandings",
+      shortDescription: "Fly and land on three rooftops",
       prompt: `## Three Rooftop Landings
 Pilot will Takeoff from the helipad and fly to the following rooftop helipads in Boston: Tufts Medical Center and two in the Downtown area.
 
@@ -59,19 +59,19 @@ The coordinates are provided in the state. The pilot will land on each helipad a
         recordFlightData: true,
         navigateToStateWaypoints: [
           {
-            name: 'Tufts Medical Center',
+            name: "Tufts Medical Center",
             latitudeDeg: 42.349,
             longitudeDeg: -71.063,
             mslAltitudeFt: 139,
           },
           {
-            name: 'Downtown 1: Back Bay',
+            name: "Downtown 1: Back Bay",
             latitudeDeg: 42.353,
             longitudeDeg: -71.064,
             mslAltitudeFt: 458,
           },
           {
-            name: 'Downtown 2: Financial District',
+            name: "Downtown 2: Financial District",
             latitudeDeg: 42.356,
             longitudeDeg: -71.052,
             mslAltitudeFt: 630,
@@ -80,15 +80,15 @@ The coordinates are provided in the state. The pilot will land on each helipad a
       },
       transitions: [
         {
-          toPhaseName: 'Bridges',
-          conditions: 'After the third rooftop helipad landing.',
+          toPhaseName: "Bridges",
+          conditions: "After the third rooftop helipad landing.",
           automaticTransition: true,
         },
       ],
     },
     {
-      name: 'Bridges',
-      shortDescription: 'Fly under two bridges',
+      name: "Bridges",
+      shortDescription: "Fly under two bridges",
       prompt: `## Fly under two bridges
 After the third landing, fly under two bridges in Boston.
 1. The Longfellow Bridge
@@ -100,7 +100,7 @@ Read out the time after flying under each bridge. The challenge completes after 
         recordFlightData: true,
         navigateToStateWaypoints: [
           {
-            name: 'Longfellow Bridge',
+            name: "Longfellow Bridge",
             latitudeDeg: 42.361,
             longitudeDeg: -71.076,
             mslAltitudeFt: 25,
@@ -115,15 +115,15 @@ Read out the time after flying under each bridge. The challenge completes after 
       },
       transitions: [
         {
-          toPhaseName: 'Finish',
-          conditions: 'After flying under the second bridge.',
+          toPhaseName: "Finish",
+          conditions: "After flying under the second bridge.",
           automaticTransition: true,
         },
       ],
     },
     {
-      name: 'Finish',
-      shortDescription: 'Challenge complete',
+      name: "Finish",
+      shortDescription: "Challenge complete",
       prompt: `## Challenge Complete
 You have completed the Boston Triple Challenge!
 Record the time from the user timer and debrief the flight.
@@ -133,12 +133,3 @@ Record the time from the user timer and debrief the flight.
     },
   ],
 };
-
-const jsonString = JSON.stringify(TripleChallenge, null, 2);
-
-import { writeFileSync } from 'fs';
-const fileName = 'triple.out.json';
-const outputPath = 'json/' + fileName;
-writeFileSync(outputPath, jsonString);
-
-console.log(`Wrote ${fileName} to ${outputPath}`);
