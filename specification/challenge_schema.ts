@@ -104,7 +104,7 @@ export const PhaseSchema = z
      * @remark length limited - less than 51 characters when combined with challenge name. */
     name: z.string().min(1).max(kMaxToolNameLength).regex(kNamePattern, kNameViolationMessage),
     /** Prompt for the phase Shirley should refer to when explaining to the pilot. */
-    prompt: z.string(),
+    prompt: z.string().optional(),
     /** The steps that Shirley should take the pilot through in this phase. */
     steps: z.array(z.string()).optional(),
     /** The performance criteria for the phase. */
@@ -158,7 +158,7 @@ export const ChallengeSchema = z
      * transitioning to this challenge. */
     shortDescription: z.string(),
     /** The text that guides Shirley during all phases of the challenge. */
-    prompt: z.string(),
+    prompt: z.string().optional(),
     /** If null, all tools are disabled unless overridden by phase.
      * If undefined or empty object, tools are enabled per defaults (see [default] above). */
     enabledTools: EnabledToolsSchema.nullable().optional(),
