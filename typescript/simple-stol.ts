@@ -1,4 +1,4 @@
-import { Challenge } from "../specification/challenge";
+import { Challenge } from "../specification/challenge_schema";
 
 const challenge: Challenge = {
   name: "StolContest",

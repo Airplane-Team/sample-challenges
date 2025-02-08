@@ -1,4 +1,4 @@
-import { Challenge } from "../specification/challenge";
+import { Challenge } from "../specification/challenge_schema";
 
 export const TripleChallenge: Challenge = {
   name: "TripleChallenge",
