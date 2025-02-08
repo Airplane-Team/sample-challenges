@@ -1,11 +1,11 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 /** Type describing the kind of waypoint. */
 export enum WaypointType {
   /** Default. Waypoint is a location with optional altitude and name. */
-  Generic = 'Generic',
+  Generic = "Generic",
   /** Waypoint is an airport. */
-  Airport = 'Airport',
+  Airport = "Airport",
 }
 
 export const WaypointSchema = z.object({
