@@ -8,7 +8,7 @@ If you need help, you can join us on our [Discord server](https://airplane.team/
 
 - **[JSON](./json)**: Sample challenges written in JSON format.
 - **[TypeScript](./typescript)**: Sample challenges written in TypeScript.
-- **[Specification](./specification)**: Contains the type formats and validation schema for for challenges.
+- **[Specification](./specification)**: Contains the type formats and validation schema for challenges.
 
 ## Shirley Challenge Maker
 
