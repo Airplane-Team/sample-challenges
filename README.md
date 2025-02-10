@@ -46,7 +46,7 @@ https://airplane.team/fly/create
 
 Or join our [Discord server](https://airplane.team/discord) and ask to join the beta test group for access to the latest features.
 
-## Converting TS to JSON
+## Converting Typescript Challenges to JSON
 
 In general, you can easily make challenges in JSON format. However, you can add this code to convert a TS challenge to JSON:
 
