@@ -45,3 +45,20 @@ The most up to date production version of the Challenge Creator can be found at:
 https://airplane.team/fly/create
 
 Or join our [Discord server](https://airplane.team/discord) and ask to join the beta test group for access to the latest features.
+
+## Converting TS to JSON
+
+In general, you can easily make challenges in JSON format. However, you can add this code to convert a TS challenge to JSON:
+
+```typescript
+const jsonString = JSON.stringify(yourChallengeName, null, 2);
+
+import { writeFileSync } from "fs";
+const fileName = "challenge.out.json";
+const outputPath = "json/" + fileName;
+writeFileSync(outputPath, jsonString);
+
+console.log(`Wrote ${fileName} to ${outputPath}`);
+```
+
+You can execute this code by running `npx ts-node typescript/stol.ts` in the root directory of the repo.

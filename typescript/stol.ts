@@ -16,6 +16,9 @@ const challenge: Challenge = {
     setUserWaypoint: false,
     startUserTimer: true,
   },
+  enabledState: {
+    wakeUpAfterQuietPeriodSeconds: 20,
+  },
   limitToAircraft: ["pa18", "c172sp", "genericSingleFixedPiston", "genericSingleComplexPiston"],
   phases: [
     {
@@ -27,7 +30,7 @@ const challenge: Challenge = {
         "Ensure pilots know the rules for the challenge.",
         "Guide the pilot to select an appropriate STOL-capable aircraft (Cessna 172P or Piper Cub PA18).",
         "Help the pilot choose a suitable airport for the challenge.",
-        "Have pilot request you mark their starting point (using `SetUserWaypoint`).",
+        "Have pilot request you mark their starting point (using SetUserWaypoint).",
       ],
       goals: [
         "Choose a STOL aircraft.",
@@ -52,6 +55,11 @@ const challenge: Challenge = {
       goals: [
         "Achieve proper positioning for as short as practical approach and landing.",
         "Prepare for any environmental factors that may affect the landing.",
+        "Give as much space as needed to properly setup for the shortest landing.",
+      ],
+      commonErrors: [
+        "Not giving the pilot enough room to setup for landing.",
+        "Failure to automatically transition to approach phase.",
       ],
       enabledState: {
         navigateToUserWaypoint: true,
@@ -74,6 +82,7 @@ const challenge: Challenge = {
       commonErrors: [
         "Excessive approach speed leading to long touchdown.",
         "Pilot aiming to land before the marked touchdown point.",
+        "Failure to automatically transition to landing phase.",
       ],
       enabledState: {
         navigateToUserWaypoint: true,
@@ -121,12 +130,3 @@ const challenge: Challenge = {
     },
   ],
 };
-
-const jsonString = JSON.stringify(challenge, null, 2);
-
-import { writeFileSync } from "fs";
-const fileName = "stol.out.json";
-const outputPath = "json/" + fileName;
-writeFileSync(outputPath, jsonString);
-
-console.log(`Wrote ${fileName} to ${outputPath}`);
