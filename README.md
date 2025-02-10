@@ -38,7 +38,7 @@ Looks good! Let's create a the Challenge Object in the same style as this one:
 
 Copy and paste your challenge file into the Shirley Challenge Creator.
 
-You can copy the whole file, but there are certain restrictions- most notably, no `//` inside a string and no strings with single quotes `' example '`.
+For challenges in Typescript, you can copy the whole file, but there are certain restrictions- most notably, no `//` inside a string and no strings with single quotes `' example '`.
 
 The most up to date production version of the Challenge Creator can be found at:
 
