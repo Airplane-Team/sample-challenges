@@ -36,19 +36,19 @@ Looks good! Let's create a the Challenge Object in the same style as this one:
 
 ## Testing
 
-Copy and paste your challenge file into the Shirley Challenge Creator.
-
-For challenges in Typescript, you can copy the whole file, but there are certain restrictions- most notably, no `//` inside a string and no strings with single quotes `' example '`.
-
 The most up to date production version of the Challenge Creator can be found at:
 
 https://airplane.team/fly/create
 
-Or join our [Discord server](https://airplane.team/discord) and ask to join the beta test group for access to the latest features.
+Copy and paste your challenge file into the Shirley Challenge Creator. The supported formats are JSON and variant of TypeScript.
+
+For challenges in Typescript, you can copy the whole file, but it must be a single challenge object with no derived properties. There are also certain restrictions- most notably, no `//` inside a string and no strings with single quotes `' example '`.
+
+For access to the latest features, join our [Discord server](https://airplane.team/discord) and ask to join the beta test group.
 
 ## Converting Typescript Challenges to JSON
 
-In general, you can easily make challenges in JSON format. However, you can add this code to convert a TS challenge to JSON:
+You can add this code to convert a TS challenge to JSON, if you need to:
 
 ```typescript
 const jsonString = JSON.stringify(yourChallengeName, null, 2);
