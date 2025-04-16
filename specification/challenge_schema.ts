@@ -17,15 +17,18 @@ const EnabledStateSchema = z
 
     /** When not empty, Shirley will know how to navigate to these waypoints. */
     navigateToStateWaypoints: z.array(WaypointSchema.strict()).optional(),
+
     /** When set true flight data is recorded for Shirley until no longer true.
      * When set true, any pre-existing data is discarded.
      * When true or after being set true, Shirley can use `analyzeFlightData`
      * to get information about the flight. */
     recordFlightData: z.boolean().optional(),
+
     /** When set to true, a timer is started at zero and Shirley maintains an awareness
      * of how much time has passed.
      * @remark Cleared when set false. */
     challengeTimer: z.boolean().optional(),
+
     /** Specifies the mean number of seconds of silence before Shirley will
      * proactively say something. */
     wakeUpAfterQuietPeriodSeconds: z.number().gt(0).optional(),
@@ -40,21 +43,15 @@ const EnabledToolsSchema = z
   .object({
     /** [default] Lets pilots look up a current US METAR. */
     weatherLookup: z.boolean().optional(),
-    /** [default] Toggles Shirley Mode- requiring "Shirley" be said for responses
-     * after periods of silence. */
-    toggleAssistantMode: z.boolean().optional(),
-    /** [default] Lets pilots disable Shirley from replying. */
-    muteAndStandby: z.boolean().optional(),
     /** [default] Lets pilots look up an airport by code. */
     airportCodeLookup: z.boolean().optional(),
     /** [default] Lets pilots look up an airport by coordinate and other criteria. */
     airportLookup: z.boolean().optional(),
     /** [default] Lets pilots take notes that appear until the end of the call. */
     pilotNotes: z.boolean().optional(),
-    /** [default] Resets the call context. */
-    resetContext: z.boolean().optional(),
     /** [default] Will eventually deliver feedback to challenge creators and FlyShirley's authors. */
     feedback: z.boolean().optional(),
+
     /** [default] Sets a destination runway using airport code and runway identifier,
      * enabling phase of flight detection for training at supported airports
      * as well as the navigation calculations that setUserWaypoint provides. */
@@ -62,12 +59,22 @@ const EnabledToolsSchema = z
     /** [default] Sets a start point for the pilot that they can then get distance
      * from via `distanceFromStartpoint` in `EnabledState`. */
     setUserWaypoint: z.boolean().optional(),
-    /** [default] Starts / restarts a timer so the pilot can check the elapsed time. */
+    /** [default] Starts / restarts a timer so the pilot can check the elapsed time.
+     * @see: `challengeTimer` which is maintained by the Challenge system. */
     startUserTimer: z.boolean().optional(),
+
     /** [default] Applies various setpoints to control the simulation. */
     setSimulatorSetpoints: z.boolean().optional(),
     /** [default] Reads a snapshot of simulator data for Shirley. */
     readSimulatorData: z.boolean().optional(),
+
+    /** [default] Lets pilots disable Shirley from replying. */
+    muteAndStandby: z.boolean().optional(),
+    /** [default] Toggles Shirley Mode- requiring "Shirley" be said for responses
+     * after periods of silence. */
+    toggleAssistantMode: z.boolean().optional(),
+    /** [default] Resets the call context - essentially creating a fresh flight. */
+    resetContext: z.boolean().optional(),
 
     /** Generates analysis of a specific maneuver from flight data that has been recorded.
      * Specific analysis types are available and known by Shirley.
