@@ -1,4 +1,3 @@
-import { Challenge } from "../specification/challenge_schema";
 
 export const HoverPractice: Challenge = {
   name: "HoverPractice",
@@ -6,7 +5,8 @@ export const HoverPractice: Challenge = {
   limitToAircraft: ["genericSingleTurbineHelicopter"],
   enabledTools: {},
   enabledState: {
-    wakeUpAfterQuietPeriodSeconds: 11
+    wakeUpAfterQuietPeriodSeconds: 11,
+    phaserEnabled: true,
   },
   phases: [
     {
@@ -28,7 +28,7 @@ export const HoverPractice: Challenge = {
         "Stabilize within a 2-meter radius at hover."
       ],
       commonErrors: [
-        "Overcontrolling and oscillating.",
+        "Over-controlling and oscillating.",
         "Drifting during pickup."
       ],
       enabledState: {
@@ -92,6 +92,10 @@ export const HoverPractice: Challenge = {
       ],
       enabledTools: {
         analyzeFlightData: true
+      },
+      enabledState: {
+        wakeUpAfterQuietPeriodSeconds: null,
+        phaserEnabled: false,
       }
     }
   ]

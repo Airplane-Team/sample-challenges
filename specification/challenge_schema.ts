@@ -8,13 +8,15 @@ const kNamePattern = /^[a-zA-Z0-9_-]*$/;
 const kNameViolationMessage =
   'Name must be one "word" containing only letters, numbers, hyphens (-), and underscores (_).';
 
+/** Schema for the enabled state options for a challenge or phase.
+ * @see EnabledState
+ */
 const EnabledStateSchema = z
   .object({
     /** [default] When set true, Shirley will know how to navigate to this next waypoint. */
     navigateToUserWaypoint: z.boolean().optional(),
     /** [default] When set true, the state will get the distance from the user waypoint. */
     distanceFromUserWaypoint: z.boolean().optional(),
-
     /** When not empty, Shirley will know how to navigate to these waypoints. */
     navigateToStateWaypoints: z.array(WaypointSchema.strict()).optional(),
 
@@ -30,8 +32,17 @@ const EnabledStateSchema = z
     challengeTimer: z.boolean().optional(),
 
     /** Specifies the mean number of seconds of silence before Shirley will
-     * proactively say something. */
-    wakeUpAfterQuietPeriodSeconds: z.number().gt(0).optional(),
+     * proactively say something.
+     *
+     * When null'd over, or undefined at both Challenge and phase level, the feature is disabled.
+     * @see OverridePropertyMap - for merging behavior.
+     * */
+    wakeUpAfterQuietPeriodSeconds: z.number().gt(0).nullable().optional(),
+
+    /** When set to true, the phaser system checks the progress of the challenge steps
+     * to determine whether to progress to the next phase. This occurs in the background
+     * so it can continue despite either interruptions or silence. */
+    phaserEnabled: z.boolean().optional(),
   })
   .strict();
 
@@ -39,6 +50,9 @@ const EnabledStateSchema = z
  * certain behaviors taken given the state during challenges. */
 export type EnabledState = z.infer<typeof EnabledStateSchema>;
 
+/** Schema for the enabled tools for a challenge or phase.
+ * @see EnabledTools
+ */
 const EnabledToolsSchema = z
   .object({
     /** [default] Lets pilots look up a current US METAR. */
@@ -73,7 +87,7 @@ const EnabledToolsSchema = z
     /** [default] Toggles Shirley Mode- requiring "Shirley" be said for responses
      * after periods of silence. */
     toggleAssistantMode: z.boolean().optional(),
-    /** [default] Resets the call context - essentially creating a fresh flight. */
+    /** Resets the call context - essentially creating a fresh flight. */
     resetContext: z.boolean().optional(),
 
     /** Generates analysis of a specific maneuver from flight data that has been recorded.
@@ -115,6 +129,9 @@ export const PhaseTransitionSchema = z
 /** Takes Shirley from one phase to the next. */
 export type PhaseTransition = z.infer<typeof PhaseTransitionSchema>;
 
+/** Schema for a phase of a challenge.
+ *  @see Phase
+ */
 export const PhaseSchema = z
   .object({
     /** Upper CamelCase name of the phase
@@ -167,6 +184,9 @@ export const PhaseSchema = z
  */
 export type Phase = z.infer<typeof PhaseSchema>;
 
+/** Schema for a challenge.
+ * @see Challenge
+ */
 export const ChallengeSchema = z
   .object({
     /** Upper CamelCase name of the challenge.
