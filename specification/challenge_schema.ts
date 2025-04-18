@@ -1,7 +1,7 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import { AircraftCodes } from './aircraft_types.js';
-import { WaypointSchema } from './waypoint.js';
+import { AircraftCodes } from "./aircraft_types.js";
+import { WaypointSchema } from "./waypoint.js";
 
 export const kMaxToolNameLength = 64;
 const kNamePattern = /^[a-zA-Z0-9_-]*$/;
