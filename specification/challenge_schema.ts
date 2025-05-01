@@ -21,9 +21,10 @@ const EnabledStateSchema = z
     navigateToStateWaypoints: z.array(WaypointSchema.strict()).optional(),
 
     /** When set true flight data is recorded for Shirley until no longer true.
-     * When set true, any pre-existing data is discarded.
      * When true or after being set true, Shirley can use `analyzeFlightData`
-     * to get information about the flight. */
+     * to generate analysis graphs of the flight.
+     * @remark When set true after false/undefined, any pre-existing data is discarded.
+     *         I.e. any existing flight data is discarded before recording begins. */
     recordFlightData: z.boolean().optional(),
 
     /** When set to true, a timer is started at zero and Shirley maintains an awareness
