@@ -24,13 +24,11 @@ export const HoverPractice: Challenge = {
       name: "PickupToHover",
       shortDescription: "Lift into a stable hover",
       prompt: "Begin in a landed position. Smoothly apply collective to initiate a hover pickup.",
-      steps: [
-        "Smoothly increase collective while managing yaw with pedals.",
-        "Stabilize at 5-10 feet AGL and minimize drift.",
-      ],
+      steps: ["Climb to 5-10 feet AGL (with vertical speed no more than 200 fpm.)"],
       goals: [
+        "Smoothly increase collective while managing yaw with pedals.",
         "Vertical lift with minimal lateral movement.",
-        "Stabilize within a 2-meter radius at hover.",
+        "Stabilize with minimize drift within a 2-meter radius at hover.",
       ],
       commonErrors: ["Over-controlling and oscillating.", "Drifting during pickup."],
       enabledState: {
@@ -43,7 +41,7 @@ export const HoverPractice: Challenge = {
     {
       name: "HoverHold",
       shortDescription: "Maintain hover position for 30 seconds",
-      prompt: "Hold position at the set hover point for 30 seconds.",
+      prompt: "Hold position at the set hover point for 30 seconds on ChallengeTimer.",
       steps: ["Attempt to maintain a precise hover for 30 seconds"],
       goals: [
         "Use micro adjustments to maintain lateral and vertical stability.",
@@ -65,12 +63,13 @@ export const HoverPractice: Challenge = {
     {
       name: "SetDown",
       shortDescription: "Controlled hover landing",
-      prompt: "Transition from hover to a smooth touchdown.",
-      steps: [
+      prompt: "Transition from hover to touchdown.",
+      steps: ["Touch down smoothly"],
+      goals: [
         "Descend slowly while maintaining heading and position.",
-        "Touch down gently without lateral movement.",
+        "Vertical descent within 1-meter drift.",
+        "Touch down gently and smoothly without lateral movement or bounce.",
       ],
-      goals: ["Vertical descent within 1-meter drift.", "Smooth touchdown without bounce."],
       commonErrors: ["Hard or uneven landing.", "Sliding during touchdown."],
       enabledState: {
         recordFlightData: true,
