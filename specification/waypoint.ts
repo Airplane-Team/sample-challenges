@@ -6,6 +6,8 @@ export enum WaypointType {
   Generic = "Generic",
   /** Waypoint is an airport. */
   Airport = "Airport",
+  /** Waypoint is a runway. */
+  Runway = "Runway",
 }
 
 export const WaypointSchema = z.object({
