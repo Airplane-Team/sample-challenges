@@ -1,7 +1,7 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-import { AircraftCodes } from "./aircraft_types.js";
-import { WaypointSchema } from "./waypoint.js";
+import { AircraftCodes } from '../aircraft_types.js';
+import { WaypointSchema } from '../waypoint.js';
 
 export const kMaxToolNameLength = 64;
 const kNamePattern = /^[a-zA-Z0-9_-]*$/;
@@ -104,6 +104,9 @@ const EnabledToolsSchema = z
     /** For supported aircraft provides a checklist lookup functionality.
      *  @deprecated to be replaced by something better. */
     checklists: z.boolean().optional(),
+
+    /** [default] Positions the aircraft at final, base, upwind, downwind, and departure based on airport/runway. */
+    setPosition: z.boolean().optional(),
   })
   .strict();
 
@@ -198,6 +201,8 @@ export const ChallengeSchema = z
     shortDescription: z.string(),
     /** The text that guides Shirley during all phases of the challenge. */
     prompt: z.string().optional(),
+    /** The opening line of the challenge. This will be the first thing Shirley says to the pilot. */
+    openingLine: z.string().min(1).optional(),
     /** If null, all tools are disabled unless overridden by phase.
      * If undefined or empty object, tools are enabled per defaults (see [default] above). */
     enabledTools: EnabledToolsSchema.nullable().optional(),
