@@ -3,8 +3,16 @@ import { z } from 'zod';
 import { AircraftCodes } from '../aircraft_types.js';
 import { WaypointSchema } from '../waypoint.js';
 
+/** Maximum number of characters of the opening line of a challenge. */
+const kMaxOpeningLineLength = 180;
+
+/** Maximum number of characters of a tool name. */
 export const kMaxToolNameLength = 64;
+
+/** Pattern for a tool name: only letters, numbers, hyphens (-), and underscores (_). */
 const kNamePattern = /^[a-zA-Z0-9_-]*$/;
+
+/** Message for a tool name violation. */
 const kNameViolationMessage =
   'Name must be one "word" containing only letters, numbers, hyphens (-), and underscores (_).';
 
@@ -202,7 +210,7 @@ export const ChallengeSchema = z
     /** The text that guides Shirley during all phases of the challenge. */
     prompt: z.string().optional(),
     /** The opening line of the challenge. This will be the first thing Shirley says to the pilot. */
-    openingLine: z.string().min(1).optional(),
+    openingLine: z.string().min(1).max(kMaxOpeningLineLength).optional(),
     /** If null, all tools are disabled unless overridden by phase.
      * If undefined or empty object, tools are enabled per defaults (see [default] above). */
     enabledTools: EnabledToolsSchema.nullable().optional(),
