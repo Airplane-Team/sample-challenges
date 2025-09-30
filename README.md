@@ -34,6 +34,14 @@ Looks good! Let's create a the Challenge Object in the same style as this one:
 ` ` `
 ```
 
+### Viewing & Editing Challenges' Source Code
+
+Challenges can also be found & tweaked on the FlyShirley website. For instance, the ALIA challenge can be found at:
+
+[https://airplane.team/fly/c/2-a250](https://airplane.team/fly/c/2-a250)
+
+by clicking "Show Challenge JSON".
+
 ## Testing
 
 The most up to date production version of the Challenge Creator can be found at:

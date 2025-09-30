@@ -1,10 +1,11 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import { AircraftCodes } from '../aircraft_types.js';
-import { WaypointSchema } from '../waypoint.js';
+import { AircraftCodes } from "../aircraft_types.js";
+import { WaypointSchema } from "../waypoint.js";
+import { SetSimDataSchema } from "../simdata/set_simdata_schemas.js";
 
 /** Maximum number of characters of the opening line of a challenge. */
-const kMaxOpeningLineLength = 180;
+const kMaxOpeningLineLength = 280;
 
 /** Maximum number of characters of a tool name. */
 export const kMaxToolNameLength = 64;
@@ -52,6 +53,18 @@ const EnabledStateSchema = z
      * to determine whether to progress to the next phase. This occurs in the background
      * so it can continue despite either interruptions or silence. */
     phaserEnabled: z.boolean().optional(),
+
+    /** When set to true, challenge can not be exited except in terminal (final) phases.
+     * @remark this is useful for cleanups at the end of a challenges, (e.g.) via setpoints. */
+    preventEarlyExit: z.boolean().optional(),
+
+    /** When set to true, the assistant mode is enabled, waiting for the pilot to say "Shirley"
+     * before responding.
+     * - When set to false, the assistant mode is disabled.
+     * - Undefined indicates no preference compared to default or current setting.
+     * @remark If true, `wakeUpAfterQuietPeriodSeconds` still wakes up Shirley after a quiet period.
+     * @remark Overrides current assistant mode state when entering the challenge phase. */
+    assistantModeEnabled: z.boolean().optional(),
   })
   .strict();
 
@@ -115,6 +128,20 @@ const EnabledToolsSchema = z
 
     /** [default] Positions the aircraft at final, base, upwind, downwind, and departure based on airport/runway. */
     setPosition: z.boolean().optional(),
+    /** Resets the flight to its initial state. */
+    resetFlight: z.boolean().optional(),
+
+    /** [default] Adds a marker to the flight.
+     * @see: `MarkerRecord` */
+    addMarker: z.boolean().optional(),
+    /** [default] Edits a marker on the flight.
+     * @see: `MarkerRecord` */
+    editMarker: z.boolean().optional(),
+    /** [default] Deletes a marker on the flight.
+     * @see: `MarkerRecord` */
+    deleteMarker: z.boolean().optional(),
+    /** [default] Analyzes a maneuver between two markers. */
+    analyzeMarkedManeuver: z.boolean().optional(),
   })
   .strict();
 
@@ -165,7 +192,7 @@ export const PhaseSchema = z
      * - When transitions is undefined, a default transition to the next phase in the
      * Challenge is assumed.
      * @remark The default transition is to the next phase in `Challenge.phases` order. If it's
-     * the last phase, the default transition offers to restart the Challenge.
+     * the last phase, the default transition offers to restart the Challenge (non-automatically).
      * @remark If steps are defined, the default transition is automatic with the completion
      * of all steps as the criteria.
      * @remark If steps are not defined, the default transition is not automatic but there
@@ -178,6 +205,8 @@ export const PhaseSchema = z
     /** Override the enabled state options for this phase.
      * When option set here and on Challenge level, the phase level takes precedence. */
     enabledState: EnabledStateSchema.optional(),
+    /** Sim Setpoints to set when entering this phase. */
+    setpoints: SetSimDataSchema.optional(),
   })
   .strict();
 
