@@ -34,6 +34,14 @@ Looks good! Let's create a the Challenge Object in the same style as this one:
 ` ` `
 ```
 
+### Viewing & Editing Challenges' Source Code
+
+Challenges can also be found & tweaked on the FlyShirley website. For instance, the ALIA challenge can be found at:
+
+[https://airplane.team/fly/c/2-a250](https://airplane.team/fly/c/2-a250)
+
+by clicking "Show Challenge JSON".
+
 ## Testing
 
 The most up to date production version of the Challenge Creator can be found at:
@@ -62,3 +70,11 @@ console.log(`Wrote ${fileName} to ${outputPath}`);
 ```
 
 You can execute this code by running `npx ts-node typescript/stol.ts` in the root directory of the repo.
+
+# Other FlyShirley Repositories by Airplane Team
+
+Please star our repositories to show your support!
+
+- [Sample Challenges (this repo)](https://github.com/Airplane-Team/sample-challenges) - Schemas and examples to help you utilize Shirley's powerful challenge system.
+- [Aircraft Profiles](https://github.com/Airplane-Team/aircraft-profiles) - Schemas and sample profiles to teach Shirley about your favorite aircraft.
+- [Sim Interface](https://github.com/Airplane-Team/sim-interface) - Complete interface to connect Shirley to any sim. Or, utilize the Shirley protocol for your own web-based sim plugin.
