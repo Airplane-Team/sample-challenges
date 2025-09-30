@@ -11,7 +11,7 @@ The 2.14 beta is on the staging environment. See [README.md#Testing](./README.md
 
 ### Added
 
-- `PhaseSchema`'s `setpoints`: When set and entering this phase, system will automatically set the sim setpoints to the values in the field to a connected flight sim.
+- `PhaseSchema`'s `setpoints`: When set and entering this phase, system will automatically set the sim setpoints to the values in the field for a connected flight sim.
 
 `EnabledStateSchema`:
 
