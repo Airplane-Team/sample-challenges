@@ -70,3 +70,11 @@ console.log(`Wrote ${fileName} to ${outputPath}`);
 ```
 
 You can execute this code by running `npx ts-node typescript/stol.ts` in the root directory of the repo.
+
+# Other FlyShirley Repositories by Airplane Team
+
+Please star our repositories to show your support!
+
+- [Sample Challenges (this repo)](https://github.com/Airplane-Team/sample-challenges) - Schemas and examples to help you utilize Shirley's powerful challenge system.
+- [Aircraft Profiles](https://github.com/Airplane-Team/aircraft-profiles) - Schemas and sample profiles to teach Shirley about your favorite aircraft.
+- [Sim Interface](https://github.com/Airplane-Team/sim-interface) - Complete interface to connect Shirley to any sim. Or, utilize the Shirley protocol for your own web-based sim plugin.
